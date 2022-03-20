@@ -35,7 +35,7 @@ class ToDoAdd extends React.Component {
         this.props.finishChange()
       })
       .then(() => {
-        // console.log('Success:', response)
+        this.setState({description: ''})
         this.props.finishChange()
       })
   }
@@ -48,7 +48,7 @@ class ToDoAdd extends React.Component {
           <input onChange={this.handleChange} type="text" value={this.state.description}></input>
         </label>
         &nbsp;
-        <button onClick={this.handleOnClick}>Submit</button>
+        <button onClick={this.handleOnClick}>Add item</button>
       </div>
     )
   }

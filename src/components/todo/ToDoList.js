@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ToDoAdd from './ToDoAdd'
+import { Link } from 'react-router-dom'
 
 class ToDoList extends React.Component {
   constructor(props) {
@@ -17,8 +18,6 @@ class ToDoList extends React.Component {
   }
 
   loadAllItems() {
-    // this.setState({loaded: false})
-
     fetch(`${this.props.API_URL}/todo`)
       .then(res => res.json())
       .then(json => {
@@ -26,11 +25,9 @@ class ToDoList extends React.Component {
           items: json,
           loaded: true
         })
-
-        console.log(json)
       })
       .catch(() => {
-        this.setState({error: 'Failed to fetch '})
+        this.setState({error: 'Failed to fetch at loading'})
       })
   }
 
@@ -47,10 +44,6 @@ class ToDoList extends React.Component {
     const mark = event.target.checked
     newItems[index].mark = mark
 
-    this.setState({
-      items: newItems
-    })
-
     fetch(
       `${this.props.API_URL}/todo/update`,
       {
@@ -62,13 +55,17 @@ class ToDoList extends React.Component {
       }
     )
       .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response))
+      .catch(() => {
+        this.setState({error: 'Failed to fetch at handling checkbox'})
+      })
+      .then(() => {
+        this.setState({
+          items: newItems
+        })
+      })
   }
 
   deleteItem(id) {
-    // this.setState({loaded: false})
-
     fetch(`${this.props.API_URL}/todo/remove/${id}`)
       .then(() => this.loadAllItems())
   }
@@ -110,7 +107,17 @@ class ToDoList extends React.Component {
                 type="checkbox"
                 checked={item.mark}
               ></input>
-              {item.mark} {item.description} <a href="#">Edit</a> <a onClick={() => this.deleteItem(item.id)} href="#">Remove</a>
+              {item.description}
+              &nbsp;
+              <Link to={`/edit/${item.id}`}>Edit</Link>
+              &nbsp;
+              <a
+                onClick={(event) => {
+                  event.preventDefault()
+                  this.deleteItem(item.id)
+                }}
+                href="#"
+              >Remove</a>
             </p>
           )
         })}

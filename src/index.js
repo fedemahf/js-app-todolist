@@ -1,12 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import ToDoEdit from './components/todo/ToDoEdit'
+
+const API_URL = 'http://localhost:3001'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App API_URL={API_URL} />} />
+        <Route path="edit/:id" element={<ToDoEdit API_URL={API_URL} />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 )

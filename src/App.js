@@ -3,16 +3,21 @@ import React from 'react'
 // import logo from './logo.svg'
 import './App.css'
 import ToDoList from './components/todo/ToDoList'
+import PropTypes from 'prop-types'
 
-export default class App extends React.Component {
-  API_URL = 'http://localhost:3001'
-
+class App extends React.Component {
   render() {
     return (
       <div className="App">
         <h1>To-Do List</h1>
-        <ToDoList API_URL={this.API_URL} />
+        <ToDoList API_URL={this.props.API_URL} />
       </div>
     )
   }
 }
+
+App.propTypes = {
+  API_URL: PropTypes.string
+}
+
+export default App
