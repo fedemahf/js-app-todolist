@@ -58,7 +58,7 @@ export class TodoController {
     return this.todoService.remove(id)
   }
 
-  @Get(':id')
+  @Get('get/:id')
   async get(@Param('id') id: string) {
     return this.todoService.findOne(id)
   }
