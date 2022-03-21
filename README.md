@@ -11,7 +11,13 @@ Tested on Debian GNU/Linux 11 (bullseye).
 
 ## Installation
 
-Clone, install dependencies, build and deploy.
+Clone this repository.
+
+```bash
+git clone https://github.com/fedemahf/js-app-todolist.git
+```
+
+Install dependencies, build and deploy. Or just run: `./start.sh`
 
 ```bash
 # Install dependencies
