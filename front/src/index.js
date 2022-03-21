@@ -6,7 +6,8 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import ToDoEdit from './components/todo/ToDoEdit'
 
-const API_URL = 'http://localhost:3001'
+// const API_URL = 'http://localhost:3001'
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001'
 
 ReactDOM.render(
   <React.StrictMode>
