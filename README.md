@@ -29,3 +29,19 @@ npm run build
 # Deploy (ports 3000-3001)
 npm run start
 ```
+
+## Docker
+
+You can run this app using Docker. Be sure that you clone the repository before you run the commands.
+
+### `./docker-build.sh`
+Create the container with the name "js-app-todolist".
+
+### `./docker-start.sh`
+Run the container and expose port 3000 and 3001.
+
+### `./docker-stop.sh`
+Stop the container.
+
+### `./docker-remove.sh`
+Remove the container.
