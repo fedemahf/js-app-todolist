@@ -1,0 +1,22 @@
+{
+  "name": "js-app-todolist",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build:front": "npm run build --prefix ./front",
+    "build:back": "npm run build --prefix ./back",
+    "build": "npm run build --prefix ./front && npm run build --prefix ./back",
+    "start:front": "serve -s front/build",
+    "start:back": "PORT=3001 node back/dist/main",
+    "start": "concurrently --kill-others \"npm run start:front\" \"npm run start:back\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "nest-typescript-starter": "file:back",
+    "reactjs": "file:front",
+    "serve": "^13.0.2"
+  }
+}
