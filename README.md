@@ -30,6 +30,16 @@ npm run build
 npm run start
 ```
 
+## Configuration
+
+You can modify the API URL creating a `.env.local` file in `./front` folder.
+
+```bash
+cp ./front/.env.example ./front/.env.local
+```
+
+Check the [.env.example](./front/.env.example) file for more information.
+
 ## Docker
 
 You can run this app using Docker. Be sure that you clone the repository before you run the commands.
